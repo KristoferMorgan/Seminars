@@ -1,6 +1,6 @@
 ﻿//В двумерном массиве показать позицию числа, заданного пользователем или указать, что такого элемента нет
 
-void FillArray(int[,] array)
+void FillArray(double[,] array)
 {
     Random rnd           = new Random();
     int    rowsLength    = array.GetLength(0);
@@ -9,12 +9,12 @@ void FillArray(int[,] array)
     {
         for (int j = 0; j < columnsLength; j++)
         {
-            array[i,j] = rnd.NextDouble();
+            array[i,j] = rnd.NextDouble()*100;
         }       
     }
 }
 //--------------------------------------------------------------------------------------------+
-void SearchElement(int[,] array, int number)
+void SearchElement(double[,] array, int number)
 {
     int    rowsLength    = array.GetLength(0);
     int    columnsLength = array.GetLength(1);
@@ -33,7 +33,7 @@ void SearchElement(int[,] array, int number)
     if(!found) Console.WriteLine($"Элемент {number} не найден в массиве!");
 }
 //--------------------------------------------------------------------------------------------+
-void PrintArray(int[,] array)
+void PrintArray(double[,] array)
 {
     int    rowsLength    = array.GetLength(0);
     int    columnsLength = array.GetLength(1);
@@ -41,7 +41,7 @@ void PrintArray(int[,] array)
     {
         for (int j = 0; j < columnsLength; j++)
         {
-            Console.Write(" {0:F8} ",array[i,j] + " ");
+            Console.Write(array[i,j] + " ");
         } 
         Console.WriteLine();      
     }
@@ -56,7 +56,7 @@ int columns = int.Parse(Console.ReadLine()?? "");
 Console.Write("Введите число для поиска в массиве: ");
 int number = int.Parse(Console.ReadLine()?? "");
 
-int[,] array = new int[rows,columns];
+double[,] array = new double[rows,columns];
 
 FillArray(array);
 PrintArray(array);
